@@ -191,8 +191,6 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./configs/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./configs/alerts.yml:/etc/prometheus/alerts.yml
       - prometheus_data:/prometheus
     networks:
       - mlops-network
@@ -208,8 +206,6 @@ services:
       - "3000:3000"
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./configs/grafana/dashboards:/etc/grafana/provisioning/dashboards
-      - ./configs/grafana/datasources:/etc/grafana/provisioning/datasources
     depends_on:
       - prometheus
     networks:
@@ -225,7 +221,6 @@ services:
     ports:
       - "9093:9093"
     volumes:
-      - ./configs/alertmanager.yml:/etc/alertmanager/config.yml
       - alertmanager_data:/alertmanager
     networks:
       - mlops-network
