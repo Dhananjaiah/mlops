@@ -22,6 +22,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to Drift Detection & Retraining!** This is where we handle the reality that models degrade over time. We're learning to detect when the world has changed and automatically trigger retraining to maintain model quality.
+
+### Lesson 1: Why Models Degrade - The Three Types of Drift
+
+**Transcript:**
+"Unlike traditional software, ML models degrade even if the code is perfect. Three types of drift cause this. Data drift - your input feature distributions change. You trained on users aged 30-40, now your users are 20-30. Concept drift - the relationship between inputs and outputs changes. What predicted churn last year doesn't predict it this year because customer behavior evolved. Prediction drift - your model's outputs shift. You used to predict 20% churn, now it's 30%. Each type requires different responses. Data drift might just need retraining. Concept drift might need new features or algorithms. Detecting drift early prevents model failure."
+
+**What you're learning:** The three types of drift and why models degrade in production.
+
+### Lesson 2: Data Drift Detection with Statistical Tests
+
+**Transcript:**
+"Data drift means your feature distributions changed. Evidently detects this using statistical tests. For continuous features, it uses the Kolmogorov-Smirnov test - comparing the distribution of your production data to your training data. For categorical features, it uses chi-squared tests. If the test returns a low p-value, distributions are significantly different - that's drift. Evidently generates reports showing which features drifted and how much. You might find that 'age' distribution shifted from mean 35 to mean 28. This insight helps you decide if retraining is needed."
+
+**What you're learning:** How statistical tests identify changes in feature distributions.
+
+### Lesson 3: Concept Drift - Detecting Degraded Performance
+
+**Transcript:**
+"Data drift doesn't always hurt performance. Maybe age distribution shifted but your model still works fine. Concept drift is different - it directly degrades accuracy. The problem is you often can't measure it in real-time because you don't have ground truth labels immediately. A churn prediction made today won't be validated for months. The workaround is proxy metrics. If your model's confidence scores drop, that suggests concept drift. If prediction distributions change dramatically, that's suspicious. You also monitor delayed labels - when you eventually learn who actually churned, compare to predictions. Concept drift detection is harder than data drift but more important."
+
+**What you're learning:** How to detect performance degradation when ground truth labels are delayed.
+
+### Lesson 4: Automated Retraining Pipelines
+
+**Transcript:**
+"Detecting drift is only useful if you act on it. Automated retraining means when drift is detected, your system triggers a training pipeline automatically. Evidently generates drift reports. Your monitoring system checks if drift exceeds thresholds. If yes, it triggers an Airflow DAG that pulls the latest data with DVC, trains a new model, evaluates it, and if it's better, registers it for deployment. This happens without human intervention. The key is making the entire training process reliable and tested, so automated runs are safe. You might still have human approval before production deployment."
+
+**What you're learning:** How to build automated retraining workflows triggered by drift detection.
+
+### Lesson 5: Retraining Strategies - Scheduled vs Triggered
+
+**Transcript:**
+"There are two retraining philosophies. Scheduled retraining happens on a cadence - weekly, monthly - regardless of drift. It's simple and ensures models never get too stale. Triggered retraining only happens when drift is detected. It's more efficient - you don't retrain unnecessarily - but requires robust drift detection. Most production systems use a hybrid: scheduled retraining as a backstop (at least monthly), plus triggered retraining for significant drift. This ensures models are always reasonably fresh while responding quickly to major distribution shifts. For each model, you choose based on how quickly data changes and how critical freshness is."
+
+**What you're learning:** When to use scheduled vs drift-triggered retraining strategies.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're building proactive model maintenance.** We're implementing drift detection that monitors for data, concept, and prediction drift. We're using Evidently to statistically measure distribution changes. We're building automated retraining pipelines that trigger when drift exceeds thresholds. And we're choosing retraining strategies - scheduled, triggered, or hybrid - based on our use case.
+
+**By the end of this lesson, you should understand:** The three types of drift and how each manifests, how to use Evidently to detect drift with statistical tests, how to build automated retraining workflows triggered by drift, and when to use scheduled vs triggered retraining. Drift detection and retraining transform static models into adaptive systems that maintain quality over time - it's what makes ML systems sustainable.
+
+---
+
 ## 🔧 Commands First: Drift Detection with Evidently
 
 ```bash

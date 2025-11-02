@@ -23,6 +23,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to Observability & Monitoring!** This is where we add eyes and ears to production systems. We're learning to collect metrics, visualize them, define SLOs, and alert when things go wrong - before users notice.
+
+### Lesson 1: Observability vs Monitoring
+
+**Transcript:**
+"Monitoring is checking if things work - 'is the API responding?', 'is CPU under 80%?'. Observability is understanding why things don't work. When latency spikes, monitoring tells you it happened. Observability lets you drill down - which endpoint? Which user? What changed? For ML, this distinction is critical. A model might respond quickly but make terrible predictions. Monitoring says 'all good', observability reveals 'accuracy dropped to 60%'. You need both: monitoring for known failure modes, observability for investigating unknown issues. Metrics, logs, and traces together provide observability."
+
+**What you're learning:** The distinction between monitoring (detecting issues) and observability (understanding them).
+
+### Lesson 2: The Golden Signals - What to Monitor
+
+**Transcript:**
+"Google's SRE book identifies four golden signals that capture system health. Latency - how long requests take. Traffic - how many requests per second. Errors - percentage of failed requests. Saturation - how full your resources are (CPU, memory, disk). For ML APIs, you monitor these plus ML-specific metrics: prediction latency, model version, prediction distribution, feature values. If your churn model suddenly predicts 90% churn when baseline is 20%, something's wrong even if error rate is zero. The golden signals plus ML metrics give you complete visibility into system and model health."
+
+**What you're learning:** What metrics to monitor for both infrastructure and ML-specific concerns.
+
+### Lesson 3: Prometheus and Grafana - The Monitoring Stack
+
+**Transcript:**
+"Prometheus is a time-series database that scrapes metrics from your services. Every 15 seconds, it pulls metrics like request count, latency, error rate from your API. It stores these in a time-series format optimized for queries like 'show me 95th percentile latency over the last hour'. Grafana visualizes this data in dashboards. You create graphs showing request rate, error rate, latency percentiles, all updating in real-time. When you see a spike in errors, you can zoom into that time range and correlate with other metrics. Together, they give you real-time and historical views of system behavior."
+
+**What you're learning:** How Prometheus and Grafana work together for metrics collection and visualization.
+
+### Lesson 4: SLIs, SLOs, and SLAs - Setting Reliability Targets
+
+**Transcript:**
+"SLI - Service Level Indicator - is a metric that measures service health. 'Percentage of requests completing in under 200ms' is an SLI. SLO - Service Level Objective - is a target for that SLI. 'We want 99% of requests to complete in under 200ms' is an SLO. SLA - Service Level Agreement - is a contract with consequences. 'We guarantee 99.9% uptime or you get a refund.' SLOs are internal goals that give you buffer before breaking SLAs. If your SLA is 99.9% but your SLO is 99.95%, you have room for incidents without penalties. For ML, you might have SLOs for prediction latency, API availability, and model accuracy."
+
+**What you're learning:** How to define measurable reliability targets and buffer zones.
+
+### Lesson 5: Alerting - Actionable Notifications
+
+**Transcript:**
+"Bad alerts wake you at 3 AM for non-issues. Good alerts only fire when something needs immediate action. The rule is: alert only on symptoms (users are affected), not on causes (a pod restarted). Alert on SLO violations, not arbitrary thresholds. If your SLO is 99% success rate and you drop to 98%, that's an alert. But don't alert on 'CPU is 70%' unless it's actually causing request failures. Use alert routing - page oncall for critical production issues, send emails for warnings, post to Slack for info. For ML, alert on accuracy drops, prediction latency spikes, or drift detection - things that affect model reliability."
+
+**What you're learning:** How to design alerts that are actionable and don't cause alert fatigue.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're making production systems observable.** We're collecting golden signal metrics plus ML-specific metrics with Prometheus. We're building Grafana dashboards for real-time visibility. We're defining SLIs and SLOs that measure reliability. And we're setting up actionable alerts that notify us of issues before they impact users.
+
+**By the end of this lesson, you should understand:** How to instrument APIs to expose metrics, how to configure Prometheus to scrape them, how to build Grafana dashboards, how to define SLOs, and how to create actionable alerts. Observability is what lets you operate production ML systems confidently - without it, you're flying blind.
+
+---
+
 ## 🔧 Commands First: Prometheus Setup
 
 ```bash

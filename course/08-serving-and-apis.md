@@ -23,6 +23,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to Serving & APIs!** This is where we make models accessible to applications. We're learning to wrap models in APIs that are fast, reliable, type-safe, and production-ready with health checks and monitoring.
+
+### Lesson 1: Real-Time Serving - The API Pattern
+
+**Transcript:**
+"Once you have a trained model, how do applications use it? They send HTTP requests to an API. A web application submits user data to your prediction endpoint, your API loads the model, runs inference, and returns predictions. This is called real-time serving because predictions happen synchronously - the caller waits for the response. The challenge is making this fast and reliable. You need to load the model once at startup, not on every request. You need request validation so bad inputs are rejected immediately. You need health checks so load balancers know if your service is down. FastAPI gives you all this with minimal code."
+
+**What you're learning:** How APIs enable real-time model inference and what makes a production-ready serving layer.
+
+### Lesson 2: FastAPI - Modern Python Web Framework
+
+**Transcript:**
+"FastAPI is built on modern Python features - type hints and async/await. When you define an endpoint with type hints, FastAPI automatically validates inputs and generates OpenAPI documentation. If your endpoint expects an integer but receives a string, FastAPI rejects it with a clear error message before your code runs. The auto-generated docs at /docs let anyone test your API in a browser. FastAPI also supports async endpoints, so while waiting for database or external API calls, it can handle other requests. This makes it much faster than traditional frameworks like Flask for IO-bound workloads."
+
+**What you're learning:** Why FastAPI's type safety and async support make it ideal for ML serving.
+
+### Lesson 3: Load Model Once - Startup Event Pattern
+
+**Transcript:**
+"The biggest performance mistake in model serving is loading the model on every request. Loading a 100MB model file takes seconds. If you do this per request, your API is unusable. The pattern is to load the model once at application startup and keep it in memory. FastAPI has startup events for this. You load the model into a global variable when the server starts. All requests then use this pre-loaded model. Inference is now milliseconds instead of seconds. This pattern is critical - I've seen production APIs brought down because someone loaded the model inside the prediction function."
+
+**What you're learning:** How to optimize serving latency by loading models at startup, not per request.
+
+### Lesson 4: Health Checks and Readiness Probes
+
+**Transcript:**
+"In production, your API runs behind load balancers and orchestrators like Kubernetes. They need to know if your service is healthy. A health check endpoint - typically /health - returns 200 OK if the service is running. But 'running' doesn't mean 'ready'. Your server might be booting up, loading the model, connecting to databases. A readiness probe checks if you're ready for traffic. Until readiness passes, the orchestrator doesn't route requests to you. This prevents errors during startup. Your health check might just return OK, but your readiness check verifies the model is loaded and dependencies are available."
+
+**What you're learning:** How health and readiness checks enable reliable orchestration and load balancing.
+
+### Lesson 5: KServe and BentoML - Kubernetes-Native Serving
+
+**Transcript:**
+"FastAPI is great for simple serving, but Kubernetes-native tools add powerful features. KServe provides autoscaling based on request volume, canary deployments for gradual rollout, A/B testing to compare models, and built-in monitoring. BentoML offers similar features plus model versioning and artifact management. The trade-off is complexity - they require Kubernetes and have steeper learning curves. For a team starting out, FastAPI in Docker is sufficient. As you scale, KServe or BentoML handle advanced serving patterns that would take months to build yourself."
+
+**What you're learning:** When to use simple FastAPI serving vs advanced platforms like KServe or BentoML.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're productionizing model inference.** We're building APIs with FastAPI that validate inputs, load models efficiently, and provide health checks. We're learning patterns like load-model-once that make serving performant. We're implementing health and readiness probes for orchestrator integration. And we're understanding when to graduate from FastAPI to Kubernetes-native platforms like KServe.
+
+**By the end of this lesson, you should understand:** How to build a FastAPI model serving endpoint with request validation, how to load models at startup for fast inference, how to implement health and readiness checks, and when advanced serving platforms add value. Serving is where your models meet users - if it's slow, unreliable, or hard to use, all your training work is wasted.
+
+---
+
 ## 🔧 Commands First: FastAPI Model Server
 
 ```bash
