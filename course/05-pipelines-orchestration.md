@@ -23,6 +23,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to Pipelines & Orchestration!** This is where we automate ML workflows. Instead of manually running scripts in order, we define pipelines that handle dependencies, retries, and scheduling automatically.
+
+### Lesson 1: Why Manual Workflows Don't Scale
+
+**Transcript:**
+"When you start in ML, you run scripts manually: 'First I run download_data.py, then preprocess.py, then train.py.' This works for learning, but it's a nightmare in production. What if download fails? You have to remember where you left off. What if you want to run this every day? You set up cron jobs that don't handle failures. What if preprocessing succeeds but training fails? You have to manually check each step. Orchestration tools like Airflow solve this by defining workflows as DAGs - directed acyclic graphs. You declare 'training depends on preprocessing, which depends on download.' Airflow handles execution order, retries, monitoring, and scheduling. You focus on the logic, not the plumbing."
+
+**What you're learning:** Why automated orchestration is essential for production ML workflows.
+
+### Lesson 2: DAGs - Declaring Dependencies as Code
+
+**Transcript:**
+"A DAG is a graph where tasks point to their dependencies. 'Download data' has no dependencies, so it runs first. 'Preprocess' depends on download, so it waits. 'Train' and 'Validate' both depend on preprocess, so they run in parallel after preprocessing completes. This is declarative programming - you say what depends on what, and Airflow figures out the execution order. If a task fails, only its downstream dependencies are blocked; unrelated tasks continue. If you need to rerun just training, Airflow knows preprocessing is already done. This makes complex workflows manageable."
+
+**What you're learning:** How DAG-based orchestration handles complex dependencies and partial reruns.
+
+### Lesson 3: Operators - Task Types in Airflow
+
+**Transcript:**
+"Airflow has different operators for different task types. PythonOperator runs Python functions - good for lightweight tasks like data validation. BashOperator runs shell commands - useful for invoking CLIs like DVC or MLflow. KubernetesPodOperator spins up containers - perfect for heavy training jobs that need GPUs. You choose the operator based on your task requirements. A data download might use BashOperator to run `dvc pull`. Training might use KubernetesPodOperator to launch a containerized job with GPU access. This flexibility lets you mix and match execution environments within one pipeline."
+
+**What you're learning:** How different Airflow operators suit different task types and resource requirements.
+
+### Lesson 4: Idempotency - Safe Retries
+
+**Transcript:**
+"Idempotency means running a task multiple times produces the same result. This is crucial for orchestration because tasks fail - networks hiccup, APIs time out, resources get exhausted. If your download task fails halfway through, can you safely rerun it? If it overwrites partial files correctly, yes - it's idempotent. If it appends to existing files, no - rerunning creates duplicate data. Airflow assumes tasks are idempotent so it can safely retry them. Design your tasks to either succeed completely or fail completely, with no partial states. Use atomic operations, write to temporary locations then move, and check for completion markers."
+
+**What you're learning:** Why idempotency is critical for reliable, retryable pipelines.
+
+### Lesson 5: Kubeflow Pipelines - Cloud-Native Alternative
+
+**Transcript:**
+"While Airflow is general-purpose, Kubeflow Pipelines is built specifically for ML on Kubernetes. Every task runs in its own container, giving you complete isolation and reproducibility. KFP has built-in support for ML-specific features like hyperparameter tuning and model serving. The trade-off is that it requires Kubernetes, while Airflow can run anywhere. For cloud-native ML stacks, KFP integrates beautifully with Kubernetes autoscaling and GPU scheduling. For hybrid or on-prem setups, Airflow offers more flexibility. Choose based on your infrastructure and team expertise."
+
+**What you're learning:** When to use Airflow vs Kubeflow Pipelines based on your infrastructure.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're automating ML workflows with orchestration.** We're defining pipelines as DAGs that declare task dependencies. We're using operators to match tasks to appropriate execution environments. We're designing idempotent tasks that can be safely retried. And we're choosing orchestration tools - Airflow for flexibility, Kubeflow for Kubernetes-native ML.
+
+**By the end of this lesson, you should understand:** How to write Airflow DAGs with task dependencies, how to choose appropriate operators for different tasks, how to make tasks idempotent for safe retries, and when to use Airflow vs Kubeflow Pipelines. Orchestration transforms manual scripts into automated, monitored, resilient workflows that run reliably in production.
+
+---
+
 ## 🔧 Commands First: Install Airflow Locally
 
 ```bash

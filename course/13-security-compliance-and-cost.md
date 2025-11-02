@@ -22,6 +22,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to Security, Compliance & Cost!** This is where we make ML systems production-grade by addressing security vulnerabilities, meeting compliance requirements, and optimizing costs. These aren't optional - they're essential for any real production system.
+
+### Lesson 1: Vulnerability Scanning - CVEs and SBOMs
+
+**Transcript:**
+"Every library you use - scikit-learn, pandas, numpy - can have security vulnerabilities. CVE databases track known flaws with severity ratings. Before deploying, you must scan for these. First, generate an SBOM - Software Bill of Materials - using Syft. This lists every dependency in your container, including transitive dependencies. Then scan the SBOM with Grype or Trivy against CVE databases. If you're using a library with a high-severity CVE, the scan fails. You must update to a patched version before deployment. This prevents you from running exploitable software in production. In regulated industries like healthcare or finance, SBOM generation is a compliance requirement."
+
+**What you're learning:** How to detect and remediate security vulnerabilities before deployment.
+
+### Lesson 2: Secrets Management - Never Commit Credentials
+
+**Transcript:**
+"The worst security mistake is hardcoding secrets. Someone commits AWS keys to GitHub, and within hours, they're discovered and exploited. Use environment variables or secrets managers like AWS Secrets Manager, Azure Key Vault, or HashiCorp Vault. Your code reads secrets at runtime from these systems, never from config files. Tools like Gitleaks scan your repository for accidentally committed secrets - API keys, passwords, tokens. Run Gitleaks in CI to block commits containing secrets. For ML, you need secrets for cloud storage (S3 credentials), databases (connection strings), and ML platforms (MLflow tokens). All must be externalized."
+
+**What you're learning:** How to manage secrets securely using environment variables and secret managers.
+
+### Lesson 3: PII Detection and Data Privacy
+
+**Transcript:**
+"ML models often train on personal data - names, emails, addresses, medical records. Regulations like GDPR and HIPAA require protecting PII. Use tools like Microsoft Presidio to detect PII in datasets. It recognizes patterns like social security numbers, credit cards, and email addresses. You can then anonymize, pseudonymize, or remove PII before training. Also implement data access controls - not everyone should see raw data. Use RBAC to limit who can access datasets, models, and predictions. For production systems, log only aggregate metrics, never individual predictions with PII. Privacy violations have massive fines and reputational damage."
+
+**What you're learning:** How to detect PII and implement privacy protections in ML systems.
+
+### Lesson 4: Compliance - Auditability and Documentation
+
+**Transcript:**
+"Regulated industries require proof of due diligence. Model cards document what model does, on what data it was trained, its performance, and limitations. This is compliance documentation. Lineage tracking shows exactly what data and code produced what model. Audit logs record who accessed what and when. Together, these provide auditability - you can answer 'how was this decision made?' for any prediction. This isn't just bureaucracy. When a model makes a mistake, you need to trace back to debug. When regulators ask questions, you need documentation. Build these practices from day one."
+
+**What you're learning:** How to meet compliance requirements through documentation and auditability.
+
+### Lesson 5: FinOps - Cost Optimization for ML
+
+**Transcript:**
+"ML is expensive - GPU training, large storage for datasets and models, high-traffic APIs. Without cost controls, bills explode. FinOps practices include: setting resource limits so training jobs can't spin up 100 GPUs accidentally, using autoscaling to scale down during low traffic, choosing cheaper storage tiers for old artifacts, setting budget alerts so you know when costs spike. For training, use spot instances that cost 70% less but can be interrupted. For storage, use lifecycle policies to move old data to cheaper tiers. For serving, right-size your containers - don't use 8-core machines if 2-core suffices. Cost optimization isn't optional at scale."
+
+**What you're learning:** How to control and optimize costs for ML infrastructure.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're hardening ML systems for production.** We're scanning for security vulnerabilities with SBOM and CVE tools. We're managing secrets securely with environment variables and secret managers. We're detecting and protecting PII to meet privacy regulations. We're implementing compliance through model cards, lineage, and audit logs. And we're optimizing costs with resource limits, autoscaling, and storage lifecycle policies.
+
+**By the end of this lesson, you should understand:** How to generate SBOMs and scan for CVEs, how to use secrets managers instead of hardcoding credentials, how to detect and protect PII, how to meet compliance requirements with documentation, and how to optimize ML infrastructure costs. Security, compliance, and cost aren't afterthoughts - they're essential from day one for any production ML system.
+
+---
+
 ## 🔧 Commands First: Vulnerability Scanning
 
 ```bash

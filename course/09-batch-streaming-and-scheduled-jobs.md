@@ -22,6 +22,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to Batch, Streaming & Scheduled Jobs!** Not all ML inference is real-time. Sometimes you score millions of records overnight, or process continuous event streams. We're learning when to use each pattern and how to implement them reliably.
+
+### Lesson 1: Batch Inference - When and Why
+
+**Transcript:**
+"Real-time APIs are great for interactive use cases, but they're not always the right choice. Imagine you need to score 10 million customers for a marketing campaign. Making 10 million API calls would take hours and cost a fortune. Instead, you use batch inference - read all customer data, run predictions in bulk, write results to a database. This happens offline, maybe nightly. Batch inference is more efficient because you load the model once, process records in batches exploiting vectorization, and write results in bulk. It's perfect for non-interactive use cases like daily risk scoring, weekly churn predictions, or monthly customer segmentation."
+
+**What you're learning:** When batch processing is more appropriate than real-time serving.
+
+### Lesson 2: Scheduled Jobs with Airflow
+
+**Transcript:**
+"Batch jobs usually run on schedules - every night at midnight, every Monday at 8 AM. Airflow makes this easy with cron-like scheduling. You define a DAG with schedule_interval='0 0 * * *' for daily at midnight. Airflow handles execution, retries if it fails, sends alerts on errors, and tracks history of all runs. Importantly, Airflow prevents overlapping runs - if yesterday's job is still running, today's waits. This prevents resource contention and ensures data consistency. For ML, you might schedule daily batch scoring, weekly model retraining, or monthly drift analysis."
+
+**What you're learning:** How to schedule ML batch jobs reliably with orchestration tools.
+
+### Lesson 3: Streaming Inference - Processing Events in Real-Time
+
+**Transcript:**
+"Some use cases need predictions on data as it arrives. Fraud detection systems analyze transactions within milliseconds. Recommendation engines update as users click. These require streaming inference. Data flows through Kafka or Kinesis, your consumer reads events, runs predictions, and publishes results to another stream. The challenge is handling late data - events arriving out of order - and maintaining state like running averages. Tools like Kafka Streams and Flink handle this complexity. Unlike batch where you process all data, streaming processes infinite data in windows - last 5 minutes, last hour. This enables low-latency decisions."
+
+**What you're learning:** When streaming inference is necessary and how it differs from batch processing.
+
+### Lesson 4: Idempotency for Reliable Jobs
+
+**Transcript:**
+"Batch jobs fail - networks hiccup, processes crash, resources get exhausted. The question is: can you safely rerun? Idempotency means running twice produces the same result as running once. If your batch scoring overwrites a table, that's idempotent - rerun gives the same table. If it appends to a table, that's not idempotent - rerun duplicates data. Design for idempotency: write to a staging location, delete old results atomically, then move staging to production. Or use upserts that update existing records instead of inserting duplicates. Or track completion markers so you know what's already processed. Idempotency makes retries safe."
+
+**What you're learning:** Why idempotency is critical for batch jobs and how to achieve it.
+
+### Lesson 5: Backfill - Reprocessing Historical Data
+
+**Transcript:**
+"Sometimes you need to rerun old data with new logic. You fixed a bug in feature engineering, or deployed a new model, and want to rescore the past month. This is called backfill. Airflow supports this with the backfill command - specify a date range and it reruns those DAG runs. The key is ensuring your pipeline can handle arbitrary date ranges, not just 'yesterday'. Parametrize your jobs with execution dates, read data for that date, write outputs with date partitions. Then backfilling is just rerunning with different parameters. This is essential for fixing production issues and maintaining data consistency."
+
+**What you're learning:** How to design pipelines that support reprocessing historical data.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're expanding beyond real-time serving.** We're implementing batch inference for offline bulk scoring. We're scheduling jobs with Airflow for recurring tasks like daily predictions and weekly retraining. We're building streaming inference for low-latency decisions on event streams. We're designing idempotent jobs that can be safely retried. And we're enabling backfills to reprocess historical data when logic changes.
+
+**By the end of this lesson, you should understand:** When to use batch vs streaming vs real-time inference, how to schedule batch jobs with Airflow, how to build idempotent data processing jobs, and how to design pipelines that support backfilling. Different use cases require different inference patterns - knowing which to use and how to implement it reliably is essential for production ML.
+
+---
+
 ## 🔧 Commands First: Batch Scoring Script
 
 ```bash

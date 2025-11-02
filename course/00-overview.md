@@ -50,6 +50,55 @@ source ~/.mlops-env
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to the MLOps Course Overview!** This module is your roadmap for the entire learning journey. We're setting expectations, establishing the learning environment, and showing you how all the pieces fit together.
+
+### Lesson 1: Course Philosophy - Commands First
+
+**Transcript:**
+"This course is different from typical ML courses. We're not starting with theory and then maybe getting to practice. We're doing the opposite - commands first, theory second. Why? Because in production, you need to know 'how do I actually do this?' before you understand all the academic details. Each module will give you exact commands to run, then explain why they work. You'll build muscle memory for the tools, then understand the concepts behind them. This is how you learn to be productive quickly in a real MLOps role."
+
+**What you're learning:** The pedagogical approach - hands-on practice drives understanding, not the other way around.
+
+### Lesson 2: The Complete System Architecture
+
+**Transcript:**
+"Let's look at what we're building together. Data flows from sources into DVC for versioning. Training pipelines pull that data, train models, and log everything to MLflow. The best models get registered in a model registry. From there, they're deployed through a serving layer - FastAPI or KServe - that handles API requests. But we don't stop at deployment. Prometheus collects metrics, Grafana visualizes them, and when drift is detected, alerts trigger automatic retraining. This is a complete cycle. Every module teaches one piece of this architecture, and by the end, you'll have built the entire system."
+
+**What you're learning:** The big picture - how data versioning, training, deployment, monitoring, and retraining all connect into a production ML system.
+
+### Lesson 3: Three Practice Environments
+
+**Transcript:**
+"You can practice this material three different ways, and I recommend you start simple and progress to more complex. First, run everything locally with Docker Compose. This is perfect for learning - it runs on your laptop, starts in minutes, and gives you the full stack. Second, move to Kubernetes with K3d or Minikube. This teaches you container orchestration and gets you closer to production patterns. Third, deploy to a real cloud provider - AWS, GCP, or Azure. This is where you learn about managed services, networking, and true production concerns. Start local, prove it works, then level up."
+
+**What you're learning:** The three-tier practice approach that takes you from local development to cloud production.
+
+### Lesson 4: The Capstone Project - Churn Predictor
+
+**Transcript:**
+"Throughout this course, you'll build a real system - a subscription churn predictor. It's not a toy example. You'll version customer data, train models with cross-validation, deploy them as APIs, monitor predictions for drift, and automatically retrain when performance degrades. You'll implement the full pipeline: data ingestion, validation, feature engineering, training, evaluation, registration, deployment, monitoring, and retraining. Every module adds one piece to this project, so by the end, you have a portfolio-worthy system that demonstrates every MLOps practice."
+
+**What you're learning:** What the end goal looks like - a complete, production-ready ML system you'll build module by module.
+
+### Lesson 5: Support Resources - Cheatsheets and Troubleshooting
+
+**Transcript:**
+"You're not expected to memorize everything. We provide three types of support resources. Cheatsheets give you quick command references - DVC commands, MLflow commands, Docker commands. The troubleshooting matrix maps symptoms to fixes - 'my training pipeline failed' → here's how to diagnose and fix it. Mock exams test your knowledge with certification-style questions. Use these resources actively. When you get stuck, the troubleshooting matrix is your first stop. When you forget a command, check the cheatsheets. When you think you're ready, take the mock exams."
+
+**What you're learning:** How to use the course support materials effectively to troubleshoot issues and reinforce learning.
+
+### Key Definition - What We're Doing Overall
+
+**In this overview module, we're establishing context.** We're showing you the complete system architecture so you understand where each module fits. We're explaining the course philosophy - commands first, practice over theory. We're setting up your practice environment options so you can start hands-on immediately. And we're introducing the capstone project that ties everything together.
+
+**By the end of this lesson, you should understand:** What you'll build (churn predictor), how you'll learn (commands first), where you'll practice (local → K8s → cloud), and what resources support you (cheatsheets, troubleshooting, exams). This isn't a theoretical course - it's a hands-on workshop where you build a production ML system from scratch, module by module.
+
+---
+
 ## 🎓 Learning Goals
 
 By course end, you will:

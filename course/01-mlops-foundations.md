@@ -23,6 +23,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to MLOps Foundations!** In this foundational lesson, we're establishing the core concepts that will guide your entire MLOps journey. Think of this as building the mental model you'll use throughout the rest of the course.
+
+### Lesson 1: Understanding the MLOps Lifecycle
+
+**Transcript:**
+"Let's start with the big picture. When you build a machine learning model, you're not just training it once and forgetting about it. In production, ML is a continuous cycle. You collect data, validate it to make sure it's good quality, engineer features to make your model effective, train the model, evaluate its performance, and if it's good enough, you register it and deploy it to production. But here's the critical part - you don't stop there. You continuously monitor how the model performs with real-world data. When you detect that performance is degrading - what we call 'drift' - you trigger the cycle again. This is fundamentally different from traditional software."
+
+**What you're learning:** How ML systems are iterative, not one-and-done. Each stage feeds into the next, creating a continuous improvement loop.
+
+### Lesson 2: Roles and Responsibilities
+
+**Transcript:**
+"MLOps isn't a solo sport. In a mature organization, you'll find four key roles working together. Data Scientists explore data and prototype models - they're the experimenters. ML Engineers take those prototypes and make them production-ready, building pipelines and optimizing performance. Platform Engineers maintain the infrastructure - the Kubernetes clusters, the monitoring systems, the compute resources. DevOps Engineers handle CI/CD, security scanning, and cost optimization. In smaller companies, you might wear multiple hats, but understanding these distinct concerns helps you organize your work effectively."
+
+**What you're learning:** Who does what in an MLOps team, and why each role matters for production ML systems.
+
+### Lesson 3: Artifacts - What to Track and Why
+
+**Transcript:**
+"Here's where MLOps diverges sharply from traditional DevOps. In regular software, you version your code and you're mostly done. But in ML, you have to track seven different types of artifacts. Code, yes - your training scripts and serving code. But also your data versions, because the same code with different data produces different models. Your model weights and architecture. Your configuration files - hyperparameters, feature selections. Your metrics - accuracy, latency, everything. Your environment - Python version, library versions. And finally, lineage - what data and code produced what model. If you can't reproduce a training run from three months ago, you can't debug production issues or meet compliance requirements."
+
+**What you're learning:** The expanded scope of version control in ML, and why tracking everything is non-negotiable for production systems.
+
+### Lesson 4: Dev-Prod Parity - The Hidden Killer
+
+**Transcript:**
+"Let's talk about what causes most production ML failures. It's not fancy algorithm problems - it's environment mismatches. You train your model on Python 3.11 with pandas 2.1, but production runs Python 3.9 with pandas 1.5. The same code produces different results, or worse, crashes silently. This is why we obsess over lock files and containerization. When dev and prod environments match exactly, your 'works on my machine' problems disappear. We use tools like Docker to ensure that what you test locally is exactly what runs in production."
+
+**What you're learning:** Why environmental consistency is critical, and how mismatches cause silent failures in production.
+
+### Lesson 5: Traditional DevOps vs MLOps
+
+**Transcript:**
+"If you come from a software engineering background, you might think 'I already know CI/CD, how hard can this be?' But MLOps adds three game-changing complexities. First, you're not just deploying code - you're deploying stateful data and models. Second, your 'binary' degrades over time as data patterns shift. A perfectly good model from January might be useless by June. Third, deployment isn't just swapping a binary - you need A/B tests, canary deployments, and shadow mode to safely introduce new models. You can't just roll back if something breaks; you need model performance monitoring to detect when something is subtly wrong."
+
+**What you're learning:** The fundamental differences between deploying software and deploying ML systems, and why you need specialized practices.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're building your conceptual framework for MLOps.** We're showing you that ML in production is a lifecycle, not a project. We're identifying the different concerns (data, models, code, environment) that you need to manage. We're explaining why reproducibility requires tracking everything. And we're establishing the team structure and roles that make production ML systems successful.
+
+**By the end of this lesson, you should understand:** Why MLOps is necessary (models degrade), what makes it different from DevOps (stateful data, monitoring requirements), who does what (roles), and what you need to track (all seven artifact types). This foundation will make every subsequent module make sense, because you'll understand how each tool and practice fits into the bigger picture.
+
+---
+
 ## 🔄 The MLOps Lifecycle
 
 ```mermaid

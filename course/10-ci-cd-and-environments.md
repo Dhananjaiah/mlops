@@ -22,6 +22,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to CI/CD & Environments!** This is where we automate the path from code commit to production deployment. We're learning to build pipelines that test, scan, and deploy code safely across multiple environments.
+
+### Lesson 1: Continuous Integration - Catching Issues Early
+
+**Transcript:**
+"Without CI, you find bugs late - maybe in staging, maybe in production, maybe never. CI runs automated checks on every commit. Your test suite runs, linters check code style, type checkers verify correctness, security scanners look for vulnerabilities. If anything fails, the commit is marked as failing and can't be merged. This catches issues immediately, when context is fresh. The developer who introduced the bug fixes it right away, not three weeks later when they've forgotten the code. For ML, CI also runs model tests - does it handle edge cases? Does it maintain accuracy on test data? CI is your safety net."
+
+**What you're learning:** How continuous integration prevents bugs from entering the codebase through automated testing.
+
+### Lesson 2: Multiple Environments - Dev, Staging, Production
+
+**Transcript:**
+"You never deploy directly to production. You need environments to test progressively. Dev is where you experiment - it's okay if things break. Staging mirrors production - same infrastructure, same scale, but with test data. You deploy to staging first, run integration tests, verify everything works. Only then do you promote to production. Each environment has its own configuration - different database URLs, different scaling, different models. But the code is identical. This separation lets you catch environment-specific issues before they affect users. If something works in staging, you have high confidence it'll work in production."
+
+**What you're learning:** Why multiple environments enable safe, progressive deployment.
+
+### Lesson 3: GitOps - Git as the Source of Truth
+
+**Transcript:**
+"GitOps means your Git repository defines everything - code, configuration, infrastructure. Want to deploy a new model? Update the config file specifying the model version, commit it, and automation deploys it. Want to roll back? Revert the commit. This makes deployments auditable - you can see exactly what changed and when. It also makes rollbacks trivial - just git revert. For ML, your registry might have 20 model versions, but your config file specifies which one is active in each environment. Changing that file triggers deployment. No manual kubectl commands, no SSH into servers - Git is the control plane."
+
+**What you're learning:** How GitOps makes deployments auditable, repeatable, and reversible.
+
+### Lesson 4: Security Scanning - SBOM and CVE Detection
+
+**Transcript:**
+"Before deploying, you must scan for security issues. SBOM - Software Bill of Materials - lists every dependency and version in your container. Tools like Syft generate this. Then Grype or Trivy scan the SBOM against CVE databases to find known vulnerabilities. If you're using pandas 1.2.0 which has a high-severity CVE, the scan fails your pipeline. You must update to a patched version before deploying. This prevents you from running software with known exploits. For ML, this is critical because we use many dependencies - scikit-learn, numpy, pandas - all with potential vulnerabilities."
+
+**What you're learning:** How to scan for security vulnerabilities before deployment using SBOM and CVE scanning.
+
+### Lesson 5: Progressive Deployment - Canary and Blue-Green
+
+**Transcript:**
+"Even after testing in staging, production deployments can fail. Canary deployments reduce risk by rolling out gradually. You deploy the new model to 5% of traffic. If metrics look good, expand to 25%, then 50%, then 100%. If anything goes wrong, you only affected a small percentage. Blue-green deployment is different - you run two environments, blue (old) and green (new). All traffic goes to blue. You deploy to green, test it, then switch traffic over. If issues occur, switch back instantly. These patterns give you progressive confidence and quick rollback options. For ML, they're essential because models can fail in unexpected ways with real data."
+
+**What you're learning:** How canary and blue-green deployments minimize risk during production rollouts.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're automating safe deployments.** We're building CI pipelines that test and scan every commit. We're setting up multiple environments for progressive testing. We're adopting GitOps so all changes are auditable and reversible. We're scanning for security vulnerabilities before deployment. And we're implementing progressive deployment patterns like canary and blue-green to minimize production risk.
+
+**By the end of this lesson, you should understand:** How to build GitHub Actions CI pipelines with testing and security scans, how to configure multiple environments with environment-specific configs, how to implement GitOps workflows, and how to do canary deployments. CI/CD transforms manual, error-prone deployment into automated, safe, auditable processes - it's essential for any production ML system.
+
+---
+
 ## 🔧 Commands First: GitHub Actions Workflow
 
 ```bash

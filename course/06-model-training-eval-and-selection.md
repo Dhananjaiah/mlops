@@ -23,6 +23,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to Model Training, Evaluation & Selection!** This is where we move beyond basic model training to systematic, robust evaluation that catches issues before production. We're learning to validate models thoroughly and select winners based on multiple criteria.
+
+### Lesson 1: Cross-Validation - Beyond Single Train-Test Split
+
+**Transcript:**
+"When you split data 80-20 for train-test, you're making one random choice that affects your results. What if that particular split happened to give you easy test examples? Your model looks great, but it's actually overfit to that split. Cross-validation solves this by using multiple splits. In 5-fold CV, you split data into 5 parts, train on 4, test on 1, and repeat 5 times with different test folds. You get 5 accuracy scores that you can average and compute standard deviation. This gives you a robust estimate of model performance. If standard deviation is high, your model is unstable. If all 5 scores are good, you have confidence it generalizes."
+
+**What you're learning:** Why cross-validation provides more reliable performance estimates than single splits.
+
+### Lesson 2: Hyperparameter Tuning - Grid vs Random Search
+
+**Transcript:**
+"Models have parameters they learn - like weights in neural networks. But they also have hyperparameters you set - learning rate, regularization strength, tree depth. These dramatically affect performance. Grid search tries every combination: learning_rate=[0.01, 0.1, 1.0] times regularization=[0.1, 1.0, 10.0] gives 9 combinations. This is exhaustive but expensive. Random search instead samples random combinations, maybe trying 20 random points. Research shows random search often finds better models faster because it explores the space more broadly. The key is to log every trial to MLflow so you can analyze what worked."
+
+**What you're learning:** How to systematically search hyperparameter space and when to use each approach.
+
+### Lesson 3: Business-Aware Model Selection
+
+**Transcript:**
+"Highest accuracy doesn't always mean best model. Imagine a fraud detection model. Model A has 95% accuracy but only catches 60% of fraud. Model B has 93% accuracy but catches 80% of fraud. Which is better? Depends on your business goal. If false positives cost little (just extra checks) but false negatives cost huge (fraud losses), you want high recall - Model B. Model selection must consider business metrics, not just statistical metrics. Also consider inference latency, model size, interpretability requirements. A slightly less accurate model that's 10x faster might be better for real-time serving."
+
+**What you're learning:** How to select models based on business requirements beyond just accuracy.
+
+### Lesson 4: Bias and Fairness Evaluation
+
+**Transcript:**
+"Your model might perform well overall but unfairly disadvantage certain groups. A loan approval model might have 90% accuracy but reject 70% of minority applicants while accepting 70% of majority applicants - that's demographic disparity. Fairness metrics like demographic parity check if outcomes are equal across groups. Equal opportunity checks if true positive rates are equal. These aren't just ethical concerns - they're legal requirements in many domains. Use libraries like Fairlearn to compute fairness metrics alongside accuracy. If bias is detected, you may need to rebalance training data, adjust decision thresholds per group, or use debiasing algorithms."
+
+**What you're learning:** How to detect and measure bias in model predictions across demographic groups.
+
+### Lesson 5: Systematic Model Selection Process
+
+**Transcript:**
+"Don't eyeball results and pick a model. Use a systematic process. First, filter models by minimum requirements - must meet accuracy threshold, must meet fairness constraints, must meet latency requirements. Second, rank remaining models by primary business metric - maybe F1 score for balanced classification. Third, consider secondary factors - model complexity, interpretability, maintenance burden. Fourth, validate your top candidate on a held-out test set that wasn't used for selection. Finally, document the decision - why this model, what trade-offs were made, what risks remain. This process is reproducible and auditable."
+
+**What you're learning:** How to implement a structured, defensible model selection process.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're professionalizing model evaluation.** We're using cross-validation for robust performance estimates. We're tuning hyperparameters systematically with grid or random search. We're evaluating fairness alongside accuracy to catch bias. We're selecting models based on business requirements, not just statistical metrics. And we're documenting decisions for reproducibility and auditability.
+
+**By the end of this lesson, you should understand:** How to implement cross-validation in scikit-learn, how to use GridSearchCV and RandomizedSearchCV for hyperparameter tuning, how to compute fairness metrics with Fairlearn, and how to select models based on multiple criteria. Rigorous evaluation is what separates research experiments from production-ready models - it's where you catch issues before they affect users.
+
+---
+
 ## 🔧 Commands First: Structured Training Script
 
 ```bash

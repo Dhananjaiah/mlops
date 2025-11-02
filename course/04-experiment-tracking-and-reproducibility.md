@@ -23,6 +23,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to Experiment Tracking & Reproducibility!** This is where we move from ad-hoc model training to systematic experimentation. MLflow lets you track every experiment, compare results, and reproduce any training run months later.
+
+### Lesson 1: The Experiment Tracking Problem
+
+**Transcript:**
+"Imagine you've trained 50 different models over two weeks, tweaking hyperparameters, trying different features. Which one performed best? What parameters did you use? Where are the model weights? If you're tracking this in spreadsheets or notebooks, good luck finding anything. MLflow solves this by automatically logging everything. Every time you train a model, MLflow records the parameters you used, the metrics it achieved, and the artifacts it produced. You can then open the MLflow UI, sort by accuracy, and instantly see which run was best. More importantly, you can click on any run and see exactly what you did - making it reproducible."
+
+**What you're learning:** Why manual experiment tracking fails and how MLflow automates comprehensive tracking.
+
+### Lesson 2: Experiments, Runs, and Hierarchy
+
+**Transcript:**
+"MLflow organizes your work hierarchically. An experiment is a collection of related runs - say, all your attempts at building a churn predictor. Each run represents one training execution with specific hyperparameters. So you might have an experiment called 'churn-predictor-v2' with 100 runs, each trying different learning rates or feature sets. This structure lets you compare apples to apples. You're not mixing your churn predictor experiments with your fraud detection experiments. And within one experiment, you can sort by any metric to find the best configuration."
+
+**What you're learning:** How MLflow's hierarchical structure organizes and simplifies model comparison.
+
+### Lesson 3: Backend Store vs Artifact Store
+
+**Transcript:**
+"MLflow has a clever two-tier storage design. The backend store is a database - SQLite for development, PostgreSQL for production - that stores metadata. What parameters did you use? What metrics did you get? This is small, structured data. The artifact store is where large files live - trained model binaries, plots, datasets. This goes to S3, Azure Blob, or similar. Why separate them? Because you want fast queries on metadata without loading gigabytes of model files. When you open MLflow UI, it queries the database to show a table of runs. Only when you click 'download model' does it fetch from the artifact store."
+
+**What you're learning:** Why MLflow separates metadata from artifacts and how this enables efficient tracking at scale.
+
+### Lesson 4: Logging Everything for Reproducibility
+
+**Transcript:**
+"Reproducibility means someone else - or future you - can recreate your exact results. MLflow makes this possible by logging seven critical pieces: parameters (hyperparameters, feature selections), metrics (accuracy, loss curves), artifacts (model files, plots), code version (git commit SHA), environment (requirements.txt), data version (DVC reference), and tags (dataset name, author, purpose). With all this logged, you can look at a run from six months ago and know exactly what code, data, and parameters produced that model. You can even re-run it if needed."
+
+**What you're learning:** What information must be logged to achieve full reproducibility of ML experiments.
+
+### Lesson 5: MLflow Models - Standardized Serving Format
+
+**Transcript:**
+"Training a model is one thing; deploying it is another. Different frameworks - scikit-learn, PyTorch, TensorFlow - all have different saving and loading mechanisms. MLflow Models solves this with a standard format. When you log a model with mlflow.sklearn.log_model, it packages the model with its dependencies and a standard interface. Later, you can load any MLflow model the same way, regardless of framework. Even better, MLflow can convert your model to different serving formats - REST API, batch scoring, even edge deployment. This standardization dramatically simplifies deployment."
+
+**What you're learning:** How MLflow Models provides framework-agnostic model packaging for deployment.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're building systematic experiment tracking.** We're using MLflow to automatically log every training run with its parameters, metrics, and artifacts. We're organizing experiments into hierarchies that make comparison easy. We're separating metadata storage from artifact storage for efficiency. And we're packaging models in a standardized format that works across frameworks and deployment targets.
+
+**By the end of this lesson, you should understand:** How to set up MLflow tracking server with backend and artifact stores, how to instrument training code to log parameters and metrics, how to compare runs in the MLflow UI, and how to package models with mlflow.{framework}.log_model. Experiment tracking turns chaos into systematic science - it's the difference between guessing which model is best and knowing with certainty.
+
+---
+
 ## 🔧 Commands First: Setup MLflow Locally
 
 ```bash
