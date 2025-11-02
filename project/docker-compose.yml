@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # PostgreSQL for MLflow backend
   db:
@@ -241,7 +239,7 @@ services:
     ports:
       - "9100:9100"
     volumes:
-      - /:/host:ro,rslave
+      - /:/host:ro
     networks:
       - mlops-network
 
