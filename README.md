@@ -166,6 +166,9 @@ mlops/
 
 ## 📖 Resources
 
+### **📘 Implementation Guide** ⭐ NEW!
+- [**Complete Implementation & Teaching Guide**](IMPLEMENTATION_GUIDE.md) - Comprehensive step-by-step runbook for implementing and teaching the entire course (1700+ lines)
+
 ### **Cheatsheets**
 - [Python Environment Management](cheatsheets/python-env.md)
 - [DVC + MLflow](cheatsheets/dvc-mlflow.md)
@@ -225,8 +228,9 @@ If you find this course helpful, please **star the repository** ⭐ and share it
 
 ## 🎯 Next Steps
 
-1. **Start Learning**: [Module 00 - Overview →](course/00-overview.md)
-2. **Quick Start**: [Capstone Project README →](project/README.md)
-3. **Get Help**: [Troubleshooting Matrix →](troubleshooting/triage-matrix.md)
+1. **📖 Complete Implementation Guide**: [Step-by-Step Runbook →](IMPLEMENTATION_GUIDE.md) - **NEW!**
+2. **Start Learning**: [Module 00 - Overview →](course/00-overview.md)
+3. **Quick Start**: [Capstone Project README →](project/README.md)
+4. **Get Help**: [Troubleshooting Matrix →](troubleshooting/triage-matrix.md)
 
 **Let's build production ML systems together! 🚀**
