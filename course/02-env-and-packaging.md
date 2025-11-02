@@ -22,6 +22,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to Environment & Packaging!** This is where we solve the "works on my machine" problem that plagues ML projects. We're learning to create reproducible environments that work identically across development, testing, and production.
+
+### Lesson 1: Modern Python Dependency Management
+
+**Transcript:**
+"Let's talk about why we're using tools like uv and poetry instead of just pip. When you `pip install scikit-learn`, you get the latest version - maybe 1.3.2 today. But three months from now, pip might install 1.4.0, which has breaking API changes. Your code breaks, and you don't know why. This is where lock files come in. Tools like uv and poetry create a lock file that pins not just scikit-learn to 1.3.2, but also every transitive dependency - numpy 1.24.3, scipy 1.11.1, all of them. Now when your teammate or your CI pipeline installs dependencies, they get exactly the same versions you tested with. That's reproducibility."
+
+**What you're learning:** Why modern dependency management tools matter, and how lock files guarantee reproducible builds.
+
+### Lesson 2: The pyproject.toml Standard
+
+**Transcript:**
+"Python packaging was a mess for years - setup.py files, requirements.txt files, different formats everywhere. PEP 518 fixed this with pyproject.toml. It's one file that declares everything: your project metadata, your dependencies, your dev dependencies, and even your tool configurations like Black and mypy. When you look at a project's pyproject.toml, you immediately know what Python version it needs, what packages it uses, and what quality tools are configured. This standardization makes ML projects much easier to understand and maintain."
+
+**What you're learning:** How pyproject.toml unifies Python project configuration and why it's now the standard.
+
+### Lesson 3: Docker for ML - Multi-stage Builds
+
+**Transcript:**
+"Docker solves environment parity at the OS level. But naive Dockerfiles for ML create huge images - 5GB or more - because they include build tools, development libraries, and temporary files. Multi-stage builds fix this. Your first stage has compilers and build tools to install packages. Your second stage copies just the installed packages and your application code. The build artifacts stay in the first stage and never make it to your final image. You end up with a 500MB production image instead of 5GB. Smaller images mean faster deployments, lower storage costs, and smaller attack surfaces."
+
+**What you're learning:** How to build efficient Docker images for ML using multi-stage patterns.
+
+### Lesson 4: Pre-commit Hooks for Quality
+
+**Transcript:**
+"Code quality isn't something you check at the end - you enforce it continuously. Pre-commit hooks run automatically before each git commit. They format your code with Black, check for linting errors with Ruff, run type checks with mypy, and scan for leaked secrets with Gitleaks. If any check fails, the commit is blocked until you fix it. This prevents bad code from ever entering your repository. In ML projects where reproducibility is critical, catching bugs early - like wrong types or hardcoded credentials - saves hours of debugging later."
+
+**What you're learning:** How automated quality checks prevent bugs from entering your codebase.
+
+### Lesson 5: Lock Files for Deterministic Builds
+
+**Transcript:**
+"Here's a real scenario: your model scores 0.87 accuracy in development. You deploy to production, and suddenly it's 0.82. You didn't change the code - what happened? Turns out production installed a newer version of pandas that changed how it handles missing values. Your feature engineering silently computed different values. This is why we generate lock files with `uv pip freeze` or `poetry lock`. These files pin exact versions, down to the patch level. When production installs from the lock file, it gets exactly what you tested with. No surprises, no silent bugs."
+
+**What you're learning:** Why lock files are essential for preventing version-related bugs in production.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're eliminating environment-related failures.** We're setting up dependency management that guarantees reproducibility across machines. We're containerizing our ML code so the runtime environment is identical everywhere. We're automating quality checks so bad code never gets committed. And we're pinning every dependency version so production behaves exactly like development.
+
+**By the end of this lesson, you should understand:** How to use uv or poetry for Python dependency management, how to write a complete pyproject.toml, how to build multi-stage Dockerfiles that create small production images, and how to configure pre-commit hooks for automatic quality enforcement. These practices form the foundation for reliable ML systems - if your environment isn't reproducible, nothing built on top of it will be reliable either.
+
+---
+
 ## 🔧 Commands First: Setup with `uv` (Recommended for Speed)
 
 ```bash

@@ -23,6 +23,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to Data Versioning & Quality!** This is where we solve two critical ML problems: "Which data did I use to train this model?" and "Is my incoming data still good quality?" Data versioning and validation are foundational for reproducible, reliable ML.
+
+### Lesson 1: Why Git Can't Version Data
+
+**Transcript:**
+"You might wonder, 'I'm already using git for code, why can't I just commit my data?' Here's why: Git is designed for text files, not large binary files. A 1GB CSV file committed to git bloats your repository permanently - even if you delete it later, it stays in git history. Worse, every clone downloads all that history. Your repo becomes unusable. DVC solves this by storing just a small pointer file in git - maybe 200 bytes - while the actual data lives in S3, GCS, or another remote. When you need the data, DVC downloads it. When you don't, it stays remote. Your git repo stays fast, but your data is fully versioned."
+
+**What you're learning:** Why specialized tools like DVC are necessary for versioning large datasets and model files.
+
+### Lesson 2: DVC Remotes and Storage Backends
+
+**Transcript:**
+"DVC doesn't care where you store your data - it supports S3, Google Cloud Storage, Azure Blob, network drives, even SSH or HTTP endpoints. For learning, you can use a local directory as a remote. For production, you use cloud storage with versioning enabled. The key is that DVC abstracts the storage layer. Your commands stay the same whether you're pulling from local storage or S3. You configure the remote once with `dvc remote add`, and from then on, `dvc push` and `dvc pull` work transparently. This makes it easy to move from local development to cloud deployment."
+
+**What you're learning:** How DVC's storage abstraction works and why it makes data versioning portable across environments.
+
+### Lesson 3: Data Lineage - Tracking Transformations
+
+**Transcript:**
+"In a real ML project, you don't just have one dataset. You have raw data, cleaned data, feature-engineered data, train sets, validation sets, test sets. DVC pipelines track these transformations. You define stages: 'preprocess.py takes raw data and outputs cleaned data', 'featurize.py takes cleaned data and outputs features'. DVC builds a dependency graph. If raw data changes, DVC knows to rerun preprocessing and featurization. This gives you complete lineage - for any model, you can trace back to the exact version of raw data it came from. That's essential for debugging and compliance."
+
+**What you're learning:** How DVC pipelines create reproducible data transformation workflows with full lineage tracking.
+
+### Lesson 4: Data Validation with Great Expectations
+
+**Transcript:**
+"Data quality problems are silent killers. Your training data might have a 'salary' column with negative values, or a 'state' column with typos like 'Californa'. Your model trains fine but makes nonsense predictions. Great Expectations prevents this by defining expectations - rules your data must pass. 'Expect salary to be between 0 and 500000', 'expect state to be in this list of 50 valid values'. When new data arrives, Great Expectations validates it against these rules. If validation fails, the pipeline stops before training a bad model. You catch data issues immediately instead of discovering them in production."
+
+**What you're learning:** How to define and enforce data quality rules that prevent bad data from corrupting your models.
+
+### Lesson 5: Drift Detection with Evidently
+
+**Transcript:**
+"Even if your data passes validation, it can still drift over time. Your training data had an average age of 35, but six months later, your production data has an average age of 28. Your model's predictions become less accurate because the population changed. Evidently detects these statistical shifts. It compares your reference dataset (training data) to your current dataset (production data) and reports drift metrics. If drift exceeds a threshold, you trigger retraining. This proactive monitoring prevents model degradation before it impacts users."
+
+**What you're learning:** How drift detection identifies changes in data distributions that require model retraining.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're making data a first-class citizen.** We're versioning it like code with DVC so we can reproduce any training run. We're tracking lineage so we know what data produced what model. We're validating quality with Great Expectations so bad data never enters the pipeline. And we're monitoring for drift with Evidently so we detect when the world has changed and our model needs updating.
+
+**By the end of this lesson, you should understand:** How to use DVC to version datasets and configure remotes, how to build DVC pipelines that track data transformations, how to write Great Expectations suites that validate data quality, and how to use Evidently to detect statistical drift. Data problems cause most ML failures in production - these tools prevent those failures.
+
+---
+
 ## 🔧 Commands First: Install and Initialize DVC
 
 ```bash

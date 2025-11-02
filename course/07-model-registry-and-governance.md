@@ -23,6 +23,55 @@
 
 ---
 
+## 🎓 Lessons with Transcript
+
+### What We're Doing in This Module
+
+**Welcome to Model Registry & Governance!** This is where we add structure to model deployment. Instead of ad-hoc "which model file should I deploy?", we have a centralized registry with approval workflows and documentation.
+
+### Lesson 1: The Model Registry - Central Source of Truth
+
+**Transcript:**
+"Without a registry, models are scattered everywhere. Training outputs go to various directories, different people save models with different names, production uses a model file someone emailed last month. This is chaos. A model registry is a single source of truth for all models. Every trained model gets registered with a name and version number. You register 'churn-predictor' version 1, then version 2, then version 3. Each version has metadata - who trained it, what data was used, what metrics it achieved. When you need to deploy or debug, you go to the registry. No more searching filesystems or Slack conversations for model files."
+
+**What you're learning:** Why centralized model registration solves the "where is the model?" problem.
+
+### Lesson 2: Stages - Model Lifecycle Management
+
+**Transcript:**
+"Not every model should go straight to production. MLflow Registry has stages to manage the lifecycle. A newly trained model starts in 'None' stage - it exists but isn't approved. When you validate it, you promote to 'Staging' - it's ready for testing in a staging environment. After testing passes, you promote to 'Production' - it's approved for user traffic. When you deploy a newer version, the old one moves to 'Archived'. This stage system creates approval gates. You can't accidentally deploy an untested model to production because it has to pass through staging first. This is governance."
+
+**What you're learning:** How stage transitions create controlled approval workflows for model deployment.
+
+### Lesson 3: Model Lineage - Traceability from Data to Deployment
+
+**Transcript:**
+"Lineage answers 'where did this model come from?' For any production model, you need to trace back to the exact training run, which links to the code commit, data version, and hyperparameters used. MLflow Registry connects these dots. Each model version links to its source run ID. That run has tags for git SHA, DVC data version, and training config. If a production model misbehaves, you can trace it back to see 'it was trained on dataset v12 with code commit abc123 using these parameters.' This makes debugging possible. It also meets compliance requirements - regulators ask 'how did you build this model?' and you can show complete lineage."
+
+**What you're learning:** How model registries enable complete traceability for debugging and compliance.
+
+### Lesson 4: Model Cards - Documenting Purpose and Limitations
+
+**Transcript:**
+"A model isn't just weights and biases - it has context. What problem does it solve? What data was it trained on? What are its performance metrics? What are known limitations and biases? Model cards document all this in a standard format. They're like README files for models. When someone wants to use your model, they read the card to understand if it fits their use case. When an issue occurs, the card helps debug - 'this model was only trained on US data, but we're using it in Europe, that explains the poor performance.' Model cards are also compliance tools - they document fairness evaluations and ethical considerations."
+
+**What you're learning:** Why model documentation is essential for safe, appropriate model usage.
+
+### Lesson 5: Governance Policies - Enforcing Standards
+
+**Transcript:**
+"Governance is about enforcing standards automatically. You might have policies like 'no model can be promoted to production unless it has 90%+ accuracy and passes fairness checks' or 'all production models must have model cards' or 'staging-to-production transitions require approval from two reviewers.' MLflow webhooks can enforce these. When someone tries to promote a model, a webhook checks if conditions are met. If not, it blocks the transition and sends an alert. This prevents human error. A tired engineer can't accidentally deploy a bad model at 2 AM because the system enforces the rules."
+
+**What you're learning:** How automated governance policies prevent deployment of unqualified models.
+
+### Key Definition - What We're Doing Overall
+
+**In this module, we're adding structure to model management.** We're using a centralized registry as the single source of truth for models. We're implementing stage-based lifecycle management with approval gates. We're tracking complete lineage from data to deployed model. We're documenting models with model cards. And we're enforcing governance policies that prevent deployment of unqualified models.
+
+**By the end of this lesson, you should understand:** How to register models in MLflow Registry, how to transition models through stages, how to query model lineage for debugging, how to create model cards, and how to implement governance policies with webhooks. A model registry transforms chaotic model management into a controlled, auditable process - it's essential for any organization running ML in production.
+
+---
+
 ## 🔧 Commands First: Register Model
 
 ```bash
