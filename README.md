@@ -170,7 +170,10 @@ mlops/
 - [**Complete Implementation & Teaching Guide**](IMPLEMENTATION_GUIDE.md) - Comprehensive step-by-step runbook for implementing and teaching the entire course (1700+ lines)
 
 ### **Cheatsheets**
-- [Linux for MLOps/DevOps](cheatsheets/linux.md) ⭐ NEW!
+- [Linux for MLOps/DevOps](cheatsheets/linux.md) - Complete Linux commands and real-time scenarios
+- [GitHub for MLOps/DevOps](cheatsheets/github.md) ⭐ NEW! - Git, GitHub Actions, CI/CD pipelines, and automation
+- [Ansible for MLOps/DevOps](cheatsheets/ansible.md) ⭐ NEW! - Infrastructure automation and configuration management
+- [AWS for MLOps/DevOps](cheatsheets/aws.md) ⭐ NEW! - AWS CLI, services, and ML-specific deployments
 - [Python Environment Management](cheatsheets/python-env.md)
 - [DVC + MLflow](cheatsheets/dvc-mlflow.md)
 - [Docker & Kubernetes](cheatsheets/docker-k8s.md)
