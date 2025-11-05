@@ -170,6 +170,7 @@ mlops/
 - [**Complete Implementation & Teaching Guide**](IMPLEMENTATION_GUIDE.md) - Comprehensive step-by-step runbook for implementing and teaching the entire course (1700+ lines)
 
 ### **Cheatsheets**
+- [Linux for MLOps/DevOps](cheatsheets/linux.md) ⭐ NEW!
 - [Python Environment Management](cheatsheets/python-env.md)
 - [DVC + MLflow](cheatsheets/dvc-mlflow.md)
 - [Docker & Kubernetes](cheatsheets/docker-k8s.md)
