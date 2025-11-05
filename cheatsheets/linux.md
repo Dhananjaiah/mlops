@@ -608,7 +608,7 @@ lsof -p PID             # Files opened by process
 set -e
 APP_NAME="flask-api"
 APP_DIR="/opt/$APP_NAME"
-REPO_URL="https://github.com/user/flask-api.git"
+REPO_URL="https://github.com/user/flask-api.git"  # CUSTOMIZE: Replace with your repository URL
 SERVICE_FILE="/etc/systemd/system/${APP_NAME}.service"
 
 echo "=== Starting deployment of $APP_NAME ==="
@@ -667,7 +667,7 @@ sudo systemctl restart "$APP_NAME"
 sudo tee /etc/nginx/sites-available/$APP_NAME > /dev/null <<EOF
 server {
     listen 80;
-    server_name api.example.com;
+    server_name api.example.com;  # CUSTOMIZE: Replace with your domain
 
     location / {
         proxy_pass http://127.0.0.1:5000;
@@ -865,8 +865,8 @@ aws s3 cp s3://my-backups/postgresql/production_db_20250105_020000.sql.gz - | gu
 
 set -e
 
-DOMAIN="api.example.com"
-EMAIL="admin@example.com"
+DOMAIN="api.example.com"        # CUSTOMIZE: Replace with your domain
+EMAIL="admin@example.com"        # CUSTOMIZE: Replace with your email
 
 echo "=== Setting up SSL certificate for $DOMAIN ==="
 
