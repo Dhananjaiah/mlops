@@ -4,8 +4,12 @@
 
 ### Installation
 ```bash
-# Linux (x86_64)
+# Linux (x86_64) - with signature verification
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig" -o "awscliv2.sig"
+# Optional: Verify signature with AWS public key
+# gpg --import aws-cli-public-key.asc
+# gpg --verify awscliv2.sig awscliv2.zip
 unzip awscliv2.zip
 sudo ./aws/install
 
@@ -15,11 +19,8 @@ brew install awscli
 # Verify installation
 aws --version
 
-# Install AWS CLI v2 with pip
-pip install awscli
-
-# Upgrade AWS CLI
-pip install --upgrade awscli
+# Note: Installing via pip is deprecated for AWS CLI v2
+# Use the methods above (curl installer or brew) instead
 ```
 
 ### Configuration
