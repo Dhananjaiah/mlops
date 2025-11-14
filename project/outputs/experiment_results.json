@@ -1,0 +1,65 @@
+{
+  "timestamp": "2025-11-14T18:00:02.147106",
+  "model_type": "RandomForestClassifier",
+  "n_features": 33,
+  "n_train_samples": 7993,
+  "n_test_samples": 1999,
+  "train_churn_rate": 0.09645940197672964,
+  "test_churn_rate": 0.09654827413706854,
+  "metrics": {
+    "train": {
+      "accuracy": 0.9065432253221569,
+      "precision": 1.0,
+      "recall": 0.0311284046692607,
+      "f1": 0.06037735849056604
+    },
+    "test": {
+      "accuracy": 0.9024512256128064,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "top_features": [
+    {
+      "feature": "days_since_last_login",
+      "importance": 0.23545318694803122
+    },
+    {
+      "feature": "engagement_score",
+      "importance": 0.0944883118625511
+    },
+    {
+      "feature": "spend_per_day",
+      "importance": 0.0767079699328042
+    },
+    {
+      "feature": "total_spent",
+      "importance": 0.06531594306985872
+    },
+    {
+      "feature": "days_as_customer",
+      "importance": 0.06336673091305026
+    },
+    {
+      "feature": "spend_per_login",
+      "importance": 0.062376068905520804
+    },
+    {
+      "feature": "login_frequency",
+      "importance": 0.058417269526782126
+    },
+    {
+      "feature": "income",
+      "importance": 0.04543462274966083
+    },
+    {
+      "feature": "avg_session_duration",
+      "importance": 0.04218574078906982
+    },
+    {
+      "feature": "sub_Basic",
+      "importance": 0.0393015433544729
+    }
+  ]
+}
