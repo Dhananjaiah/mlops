@@ -23,12 +23,13 @@ By completing this course, you will:
 
 ## 📚 Course Structure
 
-### **Modules** (15 total)
+### **Modules** (16 total)
 Each module includes: Goals, Key Terms, Commands, Verify steps, Mini-lab, Quiz, Troubleshooting
 
 | # | Module | Topics | Duration |
 |---|--------|--------|----------|
 | [00](course/00-overview.md) | **Overview** | Course structure, tooling, success criteria | 30 min |
+| [00.5](course/00.5-data-engineering-for-beginners.md) | **Data Engineering for Beginners** ⭐ NEW! | For DevOps engineers with no data background | 2 hours |
 | [01](course/01-mlops-foundations.md) | **MLOps Foundations** | Lifecycle, roles, artifacts, dev-prod parity | 1 hour |
 | [02](course/02-env-and-packaging.md) | **Environment & Packaging** | uv, poetry, Docker, pre-commit | 1.5 hours |
 | [03](course/03-data-versioning-and-quality.md) | **Data Versioning & Quality** | DVC, Great Expectations, Evidently | 2 hours |
@@ -44,7 +45,7 @@ Each module includes: Goals, Key Terms, Commands, Verify steps, Mini-lab, Quiz, 
 | [13](course/13-security-compliance-and-cost.md) | **Security, Compliance & Cost** | CVE scanning, SBOM, PII detection, FinOps | 2 hours |
 | [14](course/14-comprehensive-review.md) | **Comprehensive Review** | End-to-end scenario, troubleshooting, career paths | 1.5 hours |
 
-**Total**: ~25 hours of hands-on learning
+**Total**: ~27 hours of hands-on learning (includes beginner data engineering module)
 
 ---
 
@@ -146,8 +147,15 @@ mlops/
 
 ## 🎓 Learning Path
 
+### **New to Data Engineering?** Start Here! ⭐
+0. Complete [Module 00.5: Data Engineering for Beginners](course/00.5-data-engineering-for-beginners.md)
+   - Perfect for DevOps engineers with no data background
+   - Learn data gathering, cleaning, feature engineering, and basic ML
+   - Hands-on tutorial with sample code
+   - [Quick Start Guide](project/DATA_ENGINEERING_README.md)
+
 ### **Beginner Track** (Weeks 1-2)
-1. Complete modules 01-04 (Foundations, Environment, Data, Experiments)
+1. Complete modules 00-04 (Overview, Foundations, Environment, Data, Experiments)
 2. Work through mini-labs in each module
 3. Start the capstone project (Churn Predictor)
 
@@ -229,9 +237,10 @@ If you find this course helpful, please **star the repository** ⭐ and share it
 
 ## 🎯 Next Steps
 
-1. **📖 Complete Implementation Guide**: [Step-by-Step Runbook →](IMPLEMENTATION_GUIDE.md) - **NEW!**
-2. **Start Learning**: [Module 00 - Overview →](course/00-overview.md)
-3. **Quick Start**: [Capstone Project README →](project/README.md)
-4. **Get Help**: [Troubleshooting Matrix →](troubleshooting/triage-matrix.md)
+1. **📖 New to Data?**: [Data Engineering for Beginners →](course/00.5-data-engineering-for-beginners.md) ⭐ NEW!
+2. **📖 Complete Implementation Guide**: [Step-by-Step Runbook →](IMPLEMENTATION_GUIDE.md)
+3. **Start Learning**: [Module 00 - Overview →](course/00-overview.md)
+4. **Quick Start**: [Capstone Project README →](project/README.md)
+5. **Get Help**: [Troubleshooting Matrix →](troubleshooting/triage-matrix.md)
 
 **Let's build production ML systems together! 🚀**
