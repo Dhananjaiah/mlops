@@ -45,8 +45,24 @@ source ~/.mlops-env
 - **ML Engineers** building production pipelines
 - **DevOps/Platform Engineers** supporting ML workloads
 - **Software Engineers** transitioning to ML systems
+- **🆕 Beginners with NO data science background** - we have a special module for you!
 
 **Prerequisites**: Basic Python, Docker, Git, and Linux CLI familiarity.
+
+### 🌟 New to Data Engineering?
+
+If you're a **DevOps engineer with no data science experience**, start here:
+
+**👉 [Module 00.5: Data Engineering for Beginners](00.5-data-engineering-for-beginners.md)**
+
+This special module is designed specifically for you! It covers:
+- Data gathering and exploration (like reading logs)
+- Data cleaning (like input validation)
+- Feature engineering (like creating derived metrics)
+- Basic ML concepts (no math required!)
+- Hands-on examples with detailed explanations
+
+**Time**: 2 hours | **Level**: Absolute beginner friendly
 
 ---
 
