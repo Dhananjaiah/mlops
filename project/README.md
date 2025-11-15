@@ -1,5 +1,7 @@
 # Capstone Project: Churn Predictor
 
+> 💡 **Looking for step-by-step execution instructions?** See the [**Project Execution Guide**](../PROJECT_EXECUTION_GUIDE.md) for detailed instructions!
+
 ## 🎯 Overview
 
 **Churn Predictor** is a complete end-to-end MLOps system for predicting customer churn. It demonstrates all concepts from the MLOps course in a production-ready implementation.

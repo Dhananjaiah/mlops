@@ -51,6 +51,8 @@ Each module includes: Goals, Key Terms, Commands, Verify steps, Mini-lab, Quiz, 
 
 ## 🚀 Quick Start
 
+> 💡 **New to this project?** Check out the [**Project Execution Guide**](PROJECT_EXECUTION_GUIDE.md) for detailed step-by-step instructions, role-based paths, and "who does what"!
+
 ### **Option 1: Local (Docker Compose)**
 ```bash
 # Clone the repository
@@ -237,10 +239,11 @@ If you find this course helpful, please **star the repository** ⭐ and share it
 
 ## 🎯 Next Steps
 
-1. **📖 New to Data?**: [Data Engineering for Beginners →](course/00.5-data-engineering-for-beginners.md) ⭐ NEW!
-2. **📖 Complete Implementation Guide**: [Step-by-Step Runbook →](IMPLEMENTATION_GUIDE.md)
-3. **Start Learning**: [Module 00 - Overview →](course/00-overview.md)
-4. **Quick Start**: [Capstone Project README →](project/README.md)
-5. **Get Help**: [Troubleshooting Matrix →](troubleshooting/triage-matrix.md)
+1. **🚀 Ready to Execute?**: [Project Execution Guide →](PROJECT_EXECUTION_GUIDE.md) ⭐ NEW! - Clear step-by-step instructions with "who does what"
+2. **📖 New to Data?**: [Data Engineering for Beginners →](course/00.5-data-engineering-for-beginners.md) ⭐ NEW!
+3. **📖 Complete Implementation Guide**: [Step-by-Step Runbook →](IMPLEMENTATION_GUIDE.md)
+4. **Start Learning**: [Module 00 - Overview →](course/00-overview.md)
+5. **Quick Start**: [Capstone Project README →](project/README.md)
+6. **Get Help**: [Troubleshooting Matrix →](troubleshooting/triage-matrix.md)
 
 **Let's build production ML systems together! 🚀**
