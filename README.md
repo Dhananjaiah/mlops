@@ -121,6 +121,10 @@ mlops/
 ├── exams/                       # Mock certification exams
 │   ├── mock-exam-1.md
 │   └── mock-exam-2.md
+├── presentation/                # PowerPoint presentation materials ⭐ NEW!
+│   ├── COURSE_PRESENTATION.md   # 50+ slide deck
+│   ├── HOW_TO_CONVERT.md        # Conversion guide
+│   └── convert_presentation.sh  # Automated converter
 └── README.md                    # This file
 ```
 
@@ -176,6 +180,11 @@ mlops/
 
 ### **📘 Implementation Guide** ⭐ NEW!
 - [**Complete Implementation & Teaching Guide**](IMPLEMENTATION_GUIDE.md) - Comprehensive step-by-step runbook for implementing and teaching the entire course (1700+ lines)
+
+### **📊 Presentation Materials** ⭐ NEW!
+- [**Course Presentation Deck**](presentation/COURSE_PRESENTATION.md) - 50+ slide PowerPoint-ready presentation
+- [**Conversion Guide**](presentation/HOW_TO_CONVERT.md) - Convert markdown to PPT/PDF/HTML
+- [**Quick Converter Script**](presentation/convert_presentation.sh) - Automated conversion tool
 
 ### **Cheatsheets**
 - [Linux for MLOps/DevOps](cheatsheets/linux.md) ⭐ NEW!
