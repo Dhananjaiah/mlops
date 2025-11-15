@@ -89,3 +89,9 @@ htmlcov/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Generated presentation files (can be regenerated from markdown)
+presentation/*.pptx
+presentation/*.pdf
+presentation/*.html
+presentation/*_html/
