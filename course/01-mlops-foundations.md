@@ -147,8 +147,8 @@ tree artifacts/
 ## 🔧 Commands First: Setup Baseline Tracking
 
 ```bash
-# Create project structure
-mkdir -p mlops-demo/{data,models,configs,src,tests}
+# Create project structure with subdirectories
+mkdir -p mlops-demo/{data/{raw,processed},models,configs,src,tests}
 cd mlops-demo
 
 # Initialize git
@@ -166,8 +166,9 @@ __pycache__/
 
 # Data (track with DVC, not git)
 data/raw/*
+!data/raw/.gitkeep
 data/processed/*
-!data/.gitkeep
+!data/processed/.gitkeep
 
 # Models (track with MLflow/DVC)
 models/*.pkl
@@ -182,11 +183,11 @@ models/*.pt
 .DS_Store
 EOF
 
-# Add .gitkeep to preserve directories
-touch data/.gitkeep models/.gitkeep
+# Add .gitkeep to preserve empty directories in git
+touch data/.gitkeep data/raw/.gitkeep data/processed/.gitkeep models/.gitkeep
 
 # Initial commit
-git add .gitignore data/.gitkeep models/.gitkeep
+git add .gitignore data/.gitkeep data/raw/.gitkeep data/processed/.gitkeep models/.gitkeep
 git commit -m "Initial MLOps project structure"
 ```
 
@@ -237,7 +238,7 @@ git status
 # BAD: Different Python versions
 # Dev: Python 3.11, Prod: Python 3.9 → pandas API breaks
 
-# GOOD: Pin everything
+# GOOD: Pin everything with pyproject.toml
 cat > pyproject.toml << 'EOF'
 [project]
 name = "mlops-demo"
@@ -252,6 +253,16 @@ dependencies = [
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+EOF
+
+# Create a simple Python module structure
+mkdir -p src/mlops_demo
+cat > src/mlops_demo/__init__.py << 'EOF'
+"""MLOps Demo Package"""
+__version__ = "0.1.0"
 EOF
 
 # Install with uv (fast, reproducible)
@@ -270,7 +281,15 @@ uv pip freeze > requirements-lock.txt
 
 ## 🧪 Mini-Lab (10 min)
 
-**Goal**: Create a minimal ML project with version tracking.
+**Goal**: Practice creating a minimal ML project with version tracking from scratch.
+
+**What's Different**: This mini-lab is a *simplified*, *hands-on practice* version where you'll create a standalone project to reinforce the concepts. Unlike the main `mlops-demo` above (which sets up a full structure), this focuses on the essentials: git versioning, .gitignore, and basic metrics tracking.
+
+**Learning Objectives**:
+- Create a project structure independently
+- Configure git to ignore generated artifacts (data, models)
+- Track code while excluding outputs
+- Log metrics in a reproducible way
 
 1. **Create project**:
 ```bash
@@ -286,6 +305,7 @@ __pycache__/
 .venv/
 data/*.csv
 models/*.pkl
+models/*.json
 EOF
 git add .gitignore && git commit -m "Add .gitignore"
 ```
