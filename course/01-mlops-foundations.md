@@ -305,6 +305,7 @@ __pycache__/
 .venv/
 data/*.csv
 models/*.pkl
+models/*.json
 EOF
 git add .gitignore && git commit -m "Add .gitignore"
 ```
