@@ -41,6 +41,10 @@ env/
 *~
 
 # Data files (keep structure, not actual data)
+# Exception: Keep the example files for reference
+!project/data/raw/customers.csv
+!project/data/processed/customers_cleaned.csv
+!project/data/processed/customers_with_features.csv
 project/data/raw/*.csv
 project/data/processed/*.csv
 project/data/train/*.csv
@@ -48,6 +52,10 @@ project/data/test/*.csv
 !project/data/**/.gitkeep
 
 # Model artifacts (keep structure, not models)
+# Exception: Keep the example models for reference
+!project/models/churn_model.pkl
+!project/models/imputer.pkl
+!project/models/scaler.pkl
 project/models/*.pkl
 project/models/*.h5
 project/models/*.pt
@@ -55,6 +63,11 @@ project/models/*.onnx
 !project/models/.gitkeep
 
 # Output files (keep structure, not outputs)
+# Exception: Keep the example outputs for reference
+!project/outputs/01_eda_overview.png
+!project/outputs/02_confusion_matrix.png
+!project/outputs/03_feature_importance.png
+!project/outputs/experiment_results.json
 project/outputs/*.png
 project/outputs/*.jpg
 project/outputs/*.pdf
