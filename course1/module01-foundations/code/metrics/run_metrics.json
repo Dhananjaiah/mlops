@@ -1,0 +1,15 @@
+{
+  "accuracy": 0.73,
+  "timestamp": "2025-11-22T12:33:10.215502",
+  "model_type": "RandomForestClassifier",
+  "n_features": 7,
+  "feature_names": [
+    "age",
+    "tenure_months",
+    "monthly_charges",
+    "total_charges",
+    "num_products",
+    "has_support_tickets",
+    "avg_charge_per_month"
+  ]
+}

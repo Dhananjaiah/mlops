@@ -1,0 +1,6 @@
+{
+  "run_id": "run_20251122_123310",
+  "status": "success",
+  "model_path": "models/churn_model.pkl",
+  "metrics_path": "metrics/run_metrics.json"
+}

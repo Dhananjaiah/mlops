@@ -1,0 +1,63 @@
+[
+  {
+    "id": 1,
+    "path": "data/customers.csv",
+    "type": "data",
+    "hash": "4cb7504f61fdf27fcb477e2e076795c8f21153ad801a781223fdb2ff35ac722b",
+    "size_bytes": 52490,
+    "created_at": "2025-11-22T12:33:17.851161",
+    "metadata": {
+      "description": "Raw customer data",
+      "source": "generated",
+      "records": 1000
+    }
+  },
+  {
+    "id": 2,
+    "path": "models/churn_model.pkl",
+    "type": "model",
+    "hash": "f11c06bca11abf1f2f1aff2fc9d1a439f5bc4515530ca2e4cf289a5e66bf2e68",
+    "size_bytes": 1685657,
+    "created_at": "2025-11-22T12:33:17.853100",
+    "metadata": {
+      "description": "Random Forest churn predictor",
+      "algorithm": "RandomForestClassifier",
+      "hyperparameters": {
+        "n_estimators": 100,
+        "max_depth": 10
+      }
+    },
+    "lineage": [
+      {
+        "source_id": 1,
+        "source_path": "data/customers.csv",
+        "relationship": "trained_on",
+        "linked_at": "2025-11-22T12:33:17.853638"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "path": "metrics/run_metrics.json",
+    "type": "metrics",
+    "hash": "4eff0eb20275c22f5d0b436fde782e7de17c98329bbd48f76ef0f69cc73c2a59",
+    "size_bytes": 304,
+    "created_at": "2025-11-22T12:33:17.853326",
+    "metadata": {
+      "description": "Model performance metrics",
+      "metrics": [
+        "accuracy",
+        "precision",
+        "recall"
+      ]
+    },
+    "lineage": [
+      {
+        "source_id": 2,
+        "source_path": "models/churn_model.pkl",
+        "relationship": "evaluated_to",
+        "linked_at": "2025-11-22T12:33:17.853969"
+      }
+    ]
+  }
+]
