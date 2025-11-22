@@ -1,0 +1,47 @@
+# MLOps Course Requirements
+# Install with: pip install -r requirements.txt
+
+# Core ML Libraries
+scikit-learn==1.3.0
+pandas==2.1.0
+numpy==1.24.3
+
+# Experiment Tracking & Model Registry
+mlflow==2.8.0
+
+# Data Version Control
+dvc==3.30.0
+dvc-s3==3.0.1
+
+# API Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.4.2
+
+# Pipeline Orchestration
+apache-airflow==2.7.3
+
+# Data Validation
+great-expectations==0.18.0
+
+# Monitoring
+prometheus-client==0.18.0
+
+# Testing
+pytest==7.4.3
+pytest-cov==4.1.0
+
+# Utilities
+python-dotenv==1.0.0
+pyyaml==6.0.1
+requests==2.31.0
+click==8.1.7
+
+# Development Tools
+black==23.11.0
+ruff==0.1.5
+mypy==1.7.0
+
+# Jupyter (optional, for exploration)
+jupyter==1.0.0
+ipykernel==6.26.0
