@@ -1,0 +1,28 @@
+{
+  "experiment_id": "exp_001",
+  "timestamp": "2024-01-15T10:30:00",
+  "code": {
+    "version": "commit_abc123",
+    "file": "train.py",
+    "function": "train_model_reproducible"
+  },
+  "data": {
+    "version": "v1.0",
+    "hash": "5f4dcc3b5aa765d61d8327deb882cf99",
+    "samples": 500,
+    "features": 10
+  },
+  "environment": {
+    "python": "3.11.5",
+    "numpy": "1.24.3",
+    "scikit-learn": "1.3.0"
+  },
+  "hyperparameters": {
+    "n_estimators": 50,
+    "max_depth": 5,
+    "random_state": 42
+  },
+  "results": {
+    "accuracy": 0.96
+  }
+}
